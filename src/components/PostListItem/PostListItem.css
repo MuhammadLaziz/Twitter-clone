@@ -1,5 +1,11 @@
 .app-list-item {
     font-size: 1.25rem;
+    font-style: italic;
+    padding: 20px 35px 10px 35px;
+}
+.app-list-item-label {
+    user-select: none;
+    cursor: pointer;
 }
 .app-list-item button {
     width: 35px;
@@ -19,12 +25,12 @@
 .btn-trash   {
     color: red;
 }
-.fa-heart {
+.app-list-item .fa-heart {
     width: 35px;
     height: 35px;
     text-align: center;
-    line-height: 35px;
     font-size: 26px;
+    line-height: 35px;
     cursor: pointer;
     user-select: none;
     transition: 0.5s all;

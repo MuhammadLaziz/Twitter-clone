@@ -8,7 +8,7 @@ const PostAddForm = () => {
         placeholder="What are you thinking about"
         className="form-control new-post-label"
       />
-      <button type="button" className="btn btn-outline-secondary">
+      <button type="Button" className="btn btn-outline-secondary">
         Add Commit
       </button>
     </form>
