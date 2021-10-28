@@ -31,13 +31,15 @@
     text-align: center;
     font-size: 26px;
     line-height: 35px;
+    color: red;
     cursor: pointer;
     user-select: none;
     transition: 0.5s all;
+    opacity: 0;
 }
 .app-list-item.like .fa-heart {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0);
 }
 .app-list-item.important .app-list-item-label {
     color: #ffd700;
