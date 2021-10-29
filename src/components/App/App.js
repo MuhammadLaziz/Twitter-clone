@@ -16,13 +16,17 @@ export default class App extends React.Component {
         { label: "Learn Vue JS with me", important: false, like: false, id: 2 },
         { label: "Learn Angular JS with me", important: false, like: false, id: 3 },
       ],
-      term: '0',
+      term: '',
+      filter: 'all',
     };
     this.deletItem = this.deletItem.bind(this);
     this.addItem = this.addItem.bind(this);
     this.onToggleImportant = this.onToggleImportant.bind(this)
     this.onToggleLiked = this.onToggleLiked.bind(this)
     this.onUpdateSearch = this.onUpdateSearch.bind(this)
+    this.searchPost = this.searchPost.bind(this)
+    this.filterPost = this.filterPost.bind(this)
+    this.onFilterSelect = this.onFilterSelect.bind(this)
 
     this.maxId = 4;
   }
@@ -97,21 +101,33 @@ export default class App extends React.Component {
   }
 
   onUpdateSearch(term) {
-    this.setState({term: term})
+    this.setState({term})
+  }
+
+  filterPost (items, filter) {
+    if(filter === 'like') {
+      return items.filter(item => item.like)
+    }else {
+      return items
+    }
+  }
+
+  onFilterSelect(filter) {
+    this.setState({filter})
   }
 
   render() {
-    const {term, data} = this.state
+    const {term, data, filter} = this.state
     const liked = data.filter(item => item.like).length
     const allPosts = data.length
-    const visiblePosts = this.searchPost(data, term)
+    const visiblePosts = this.filterPost(this.searchPost(data, term), filter)
 
     return (
       <div className="App">
         <AppHeader liked={liked} allPosts={allPosts} />
         <div className="search-panel d-flex">
           <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-          <PostStatusFilter />
+          <PostStatusFilter filter={filter} onFilterSelect={this.onFilterSelect} />
         </div>
         <PostList 
           posts={visiblePosts} 
