@@ -31,7 +31,7 @@ export default class PostAddForm extends React.Component{
           onChange={this.onValueChange}
           value={this.state.text}
         />
-        <button  type="Button" className="btn btn-outline-secondary">
+        <button  type="Button" onClick={this.onSubmit} className="btn btn-outline-secondary">
           Add Commit
         </button>
       </form>
